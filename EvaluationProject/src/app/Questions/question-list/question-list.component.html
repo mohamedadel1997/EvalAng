@@ -1,0 +1,21 @@
+<div class="pt-3 pb-3">
+  <a class="btn btn-primary" aria-current="page" routerLink="/ques">Create Question</a>
+</div>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col" sortable="name" >Question</th>
+			<th scope="col" sortable="name" >action</th>
+
+		</tr >
+	</thead>
+
+	<tbody>
+		<tr *ngFor="let item of questionList">
+			<td> {{item.question}} </td>
+			<td> <a class="btn btn-secondary">show</a></td>
+		</tr>
+	</tbody>
+</table>

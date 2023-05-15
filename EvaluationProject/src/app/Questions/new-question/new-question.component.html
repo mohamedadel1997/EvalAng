@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit(questionForm)">
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="question" class="form-label">Evaluation Name</label>
+          <input
+            type="text"
+            formControlName="question"
+            id="question"
+            class="form-control"
+            name="question"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!questionForm.valid"
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

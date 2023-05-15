@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+    <form [formGroup]="evaluationForm" (ngSubmit)="onSubmit(evaluationForm)">
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="EvaluationName" class="form-label">Evaluation Name</label>
+          <input
+            type="text"
+            formControlName="evalName"
+            id="EvaluationName"
+            class="form-control"
+            name="EvaluationName"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="EvaluationStartDate" class="form-label">Evaluation Start Date</label>
+          <div class="input-group">
+            <input
+            class="form-control"
+            id="EvaluationStartDate"
+            name="EvaluationStartDate"
+            formControlName="evalStartDate"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            required
+            />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="EvaluationEndTime" class="form-label">Evaluation End Date</label>
+          <div class="input-group">
+            <input
+            class="form-control"
+            formControlName="evalEndDate"
+            id="EvaluationEndTime"
+            name="EvaluationEndTime"
+            ngbDatepicker
+            #dE="ngbDatepicker"
+            required
+            />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dE.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3" >
+        <label for="DepartmentId" class="form-label">Evaluation Department</label>
+        <select
+        class="form-select"
+        formControlName="evalDepId"
+        aria-label="Default select example"
+        id="DepartmentId"
+        name="DepartmentId"
+        required>
+          <option value="{{i+1}}" *ngFor="let item of DepartmentArray; index as i">{{item}}</option>
+        </select>
+      </div>
+
+      <div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!evaluationForm.valid"
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

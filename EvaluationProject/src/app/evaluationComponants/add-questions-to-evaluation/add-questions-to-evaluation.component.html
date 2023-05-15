@@ -1,0 +1,44 @@
+<div class="alert alert-success" role="alert" *ngIf="message !='' ">
+  {{message}}
+</div>
+
+<div class="mb-3 row">
+  <h3 class="col-11">Assigned Questions for this evaluation</h3>
+  <a class="btn btn-primary col-1 justify-content-end" (click)="saveQuestionForEvaluation()">Save</a>
+</div>
+
+<div class="mb-3 text-danger" *ngIf="AllQuestionsForEvaluationArr?.length === 0; else elseBlock">
+  No Questions for this evaluation
+</div>
+
+<ng-template #elseBlock>
+  <ul class="list-group" *ngFor="let item of AllQuestionsForEvaluationArr; index as i">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{item.question}}
+      <a class="btn btn-danger" (click)="RemoveQues(item)">Remove</a>
+    </li>
+  </ul>
+</ng-template>
+
+
+
+<hr>
+<h3>All Questions</h3>
+
+<table class="table table-striped row-5">
+	<thead>
+		<tr>
+			<th scope="col" sortable="name" >#</th>
+			<th scope="col" sortable="name" >Question</th>
+			<th scope="col" sortable="name" >action</th>
+		</tr >
+	</thead>
+
+	<tbody>
+		<tr *ngFor="let item of AllQuestionArr; index as i">
+			<td> {{i + 1}} </td>
+			<td> {{item.question}} </td>
+			<td> <a class="btn btn-primary" (click)="addQuestionToEval(item)">Add</a></td>
+		</tr>
+	</tbody>
+</table>

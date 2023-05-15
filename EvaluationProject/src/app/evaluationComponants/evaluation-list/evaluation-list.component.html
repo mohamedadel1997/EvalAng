@@ -1,0 +1,68 @@
+<div class="pt-3 pb-3">
+  <a class="btn btn-primary" aria-current="page" routerLink="/Evaluation">Create Evaluations</a>
+</div>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col" sortable="name" >Evaluation Name</th>
+			<th scope="col" sortable="area" >Start Date</th>
+			<th scope="col" sortable="population">End Date</th>
+			<th scope="col" sortable="population">Creation Date</th>
+			<th scope="col" sortable="population">Status</th>
+			<th scope="col" sortable="population">Dep. name</th>
+			<th scope="col" sortable="population">Questions</th>
+		</tr >
+	</thead>
+
+	<tbody>
+		<tr *ngFor="let item of evaluationList">
+      <td> {{item.id}} </td>
+			<td> {{item.evaluationName}} </td>
+			<td> {{item.evaluationStartDate | date}} </td>
+			<td> {{item.evaluationEndTime | date}} </td>
+			<td> {{item.evaluationCreationTime | date}} </td>
+			<td> {{item.evaluationStatus}} </td>
+			<td> {{item.departmentName}} </td>
+			<td>
+        <a class="btn btn-primary" (click)="addQuestion(item.id)">Add Questions</a> |
+        <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        (click)="getQuestionDetails(item.id)"
+        >Details
+      </button>
+      </td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Evaluation Questions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 text-danger" *ngIf="quesArrStr === null">
+          No Questions for this evaluation
+        </div>
+
+        <div class="mb-3" *ngFor="let ques of quesArrStr">
+          {{ques.question}}
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

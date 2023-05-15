@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <div class="mb-3" >
+      <div class="alert alert-secondary" role="alert" *ngIf="errMessage!=''">
+        {{errMessage}}
+      </div>
+      <!-- <div class="alert alert-success" role="alert" *ngIf="successMessage!=''">
+        {{successMessage}}
+      </div> -->
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="employeeName" class="form-label">Employee Name</label>
+          <input
+            type="text"
+            id="employeeName"
+            class="form-control"
+            ngModel
+            name="employeeName"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="employeePhone" class="form-label">Employee Phone</label>
+          <input
+            type="text"
+            id="employeePhone"
+            class="form-control"
+            ngModel
+            name="employeePhone"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            ngModel
+            name="email"
+            required
+            email
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            ngModel
+            name="password"
+            required
+            minlength="6"
+          />
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Employee Role</label>
+        <select
+        class="form-select"
+        aria-label="Default select example"
+        id="employeeRole"
+        ngModel
+        name="employeeRole"
+        required>
+          <option value="{{item}}" *ngFor="let item of employeeRoleArray; index as i">{{item}}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="DepartmentId" class="form-label">Employee Department</label>
+        <select
+        class="form-select"
+        aria-label="Default select example"
+        id="DepartmentId"
+        ngModel
+        name="DepartmentId"
+        required>
+          <option value="{{i+1}}" *ngFor="let item of DepartmentArray; index as i">{{item}}</option>
+        </select>
+      </div>
+
+      <div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!authForm.valid">
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
